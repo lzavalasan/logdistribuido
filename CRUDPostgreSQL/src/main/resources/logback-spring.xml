@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration>
+
+	<appender name="consoleLog"
+		class="ch.qos.logback.core.ConsoleAppender">
+		<layout class="ch.qos.logback.classic.PatternLayout">
+			<pattern>
+				%date{yyyy-MM-dd HH:mm:ss.SSS} [%X{X-Request-ID}]%-5level[%thread]%logger{56}.%method:%L -%msg%n
+			</pattern>
+		</layout>
+	</appender>
+
+	<appender name="fileLog"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<encoder>
+			<pattern>
+				%date{yyyy-MM-dd HH:mm:ss.SSS} [%X{X-Request-ID}]%-5level[%thread]%logger{56}.%method:%L -%msg%n
+			</pattern>
+		</encoder>
+		<!-- active file -->
+		<file>D:/log/wsrPersona.log</file>
+		<!-- Ruta error -->
+		<rollingPolicy
+			class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+			<fileNamePattern>D:/log/wsrPersona.%d.%i.log
+			</fileNamePattern>
+			<maxFileSize>100MB</maxFileSize>
+			<maxHistory>120</maxHistory>
+			<totalSizeCap>20GB</totalSizeCap>
+		</rollingPolicy>
+
+	</appender>
+
+	<appender name="insertar"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<encoder>
+			<pattern>
+				%date{yyyy-MM-dd HH:mm:ss.SSS} %-5level %msg %n
+			</pattern>
+		</encoder>
+
+		<file>D:/log/wsrPersona-insertar.log
+		</file>
+		<rollingPolicy
+			class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+			<fileNamePattern>D:/log/wsrPersona-insertar.%d.%i.lo
+			</fileNamePattern>
+			<maxFileSize>100MB</maxFileSize>
+			<maxHistory>120</maxHistory>
+			<totalSizeCap>20GB</totalSizeCap>
+		</rollingPolicy>
+	</appender>
+
+	<appender name="modificar"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<encoder>
+			<pattern>
+				%date{yyyy-MM-dd HH:mm:ss.SSS} %-5level %msg %n
+			</pattern>
+		</encoder>
+		<file>D:/log/wsrPersona-modificar.log
+		</file>
+		<rollingPolicy
+			class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+			<fileNamePattern>D:/log/wsrPersona-modificar.%d.%i.log
+			</fileNamePattern>
+			<maxFileSize>100MB</maxFileSize>
+			<maxHistory>120</maxHistory>
+			<totalSizeCap>20GB</totalSizeCap>
+		</rollingPolicy>
+	</appender>
+
+	<appender name="eliminar"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<encoder>
+			<pattern>
+				%date{yyyy-MM-dd HH:mm:ss.SSS} %-5level %msg %n
+			</pattern>
+		</encoder>
+		<file>D:/log/wsrPersona-eliminar.log
+		</file>
+		<rollingPolicy
+			class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+			<fileNamePattern>D:/log/wsrPersona-eliminar.%d.%i.log
+			</fileNamePattern>
+			<maxFileSize>100MB</maxFileSize>
+			<maxHistory>120</maxHistory>
+			<totalSizeCap>20GB</totalSizeCap>
+		</rollingPolicy>
+	</appender>
+
+	<appender name="listar"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<encoder>
+			<pattern>
+				%date{yyyy-MM-dd HH:mm:ss.SSS} %-5level %msg %n
+			</pattern>
+		</encoder>
+		<file>D:/log/wsrPersona-listar.log
+		</file>
+		<rollingPolicy
+			class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+			<fileNamePattern>D:/log/wsrPersona-listar.%d.%i.log
+			</fileNamePattern>
+			<maxFileSize>100MB</maxFileSize>
+			<maxHistory>120</maxHistory>
+			<totalSizeCap>20GB</totalSizeCap>
+		</rollingPolicy>
+	</appender>
+
+
+	<root>
+		<level value="INFO" />
+		<!-- <appender-ref ref="consoleLog"/> -->
+		<appender-ref ref="fileLog" />
+	</root>
+
+	<logger name="insertarPersona" level="INFO" additivity="false">
+		<appender-ref ref="insertar" />
+	</logger>
+
+	<logger name="modificarPersona" level="INFO" additivity="false">
+		<appender-ref ref="modificar" />
+	</logger>
+
+	<logger name="eliminarPersona" level="INFO" additivity="false">
+		<appender-ref ref="eliminar" />
+	</logger>
+
+	<logger name="listarPersonas" level="INFO" additivity="false">
+		<appender-ref ref="listar" />
+	</logger>
+
+	
+</configuration>
+
+<!-- <pattern> %date{yyyy-MM-dd HH:mm:ss.SSS} %-5level[%thread]%logger{56}.%method:%L 
+	-%msg%n </pattern> -->
